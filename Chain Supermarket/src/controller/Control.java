@@ -116,13 +116,13 @@ public class Control {
 		return listNumbers;
 	}
 	private void addProduct() {
-		int id = io.readGraphicInt("Digite el ID");
+		int id = io.readGraphicInt("Digite el ID del producto");
 		Supplier s = new Supplier(); 
 		if (s.findProduct(id) == -1) {
 			Product p = new Product();
 			p = new Product(id, io.readGraphicString("Digite el nombre del producto"),
 					io.readGraphicDouble("Digite el precio"), 
-					io.readGraphicInt("Digite el stocck"),this.showSupplier(io.readGraphicShort("Digite el número de Rut del proveedor")),
+					io.readGraphicInt("Digite el stock"),this.showSupplier(io.readGraphicShort("Digite el número de Rut del proveedor")),
 					this.showCategory(io.readGraphicInt("Digite el número de ID de la categoría")));		 
 			s.addProduct(p);
 			io.showGraphicMessage("Product generated");
@@ -137,7 +137,7 @@ public class Control {
 		if (s.findCategory(id)!=-1) {
 			s.category(s.findCategory(id));
 		}else {
-			Exception e=new ValueNotFoundException("No existe este empleado");
+			Exception e=new ValueNotFoundException("Ya existe esta categoria");
 			io.showGraphicErrorMessage(e.getMessage());
 		}
 		return s.category(s.findCategory(id));
@@ -147,7 +147,7 @@ public class Control {
 		if (person.findSupplier(rut)!=-1) {
 			person.supplier(person.findSupplier(rut));
 		}else {
-			Exception e=new ValueNotFoundException("No existe este empleado");
+			Exception e=new ValueNotFoundException("Ya existe este provedor);
 			io.showGraphicErrorMessage(e.getMessage());
 		}
 		return person.supplier(person.findSupplier(rut));
